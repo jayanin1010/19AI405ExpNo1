@@ -1,6 +1,6 @@
 <h1>ExpNo 1 :Developing AI Agent with PEAS Description</h1>
-<h3>Name: Saravanan N</h3>
-<h3>Register Number/Staff Id: TSML006</h3>
+<h3>Name: Jayani N</h3>
+<h3>Register Number: 212224100025</h3>
 
 
 <h3>AIM:</h3>
@@ -40,3 +40,56 @@
 <p>Treat unhealthy patients in each room. And check for the unhealthy patients in random room</p>
 <h3>STEP 5:</h3>
 <p>Measure the performance parameters: For each treatment performance incremented, for each movement performance decremented</p>
+
+
+<h3>CODE</h3>
+
+    import random
+    
+    rooms = ["Room A", "Room B"]
+    
+    # Random temperatures for patients
+    patient_temp = {
+        "Room A": round(random.uniform(97.0, 102.0), 1),
+        "Room B": round(random.uniform(97.0, 102.0), 1)
+    }
+    
+    performance = 0
+    current_room = "Room A"
+    
+    def check_and_treat(room):
+        global performance
+        temp = patient_temp[room]
+        print(f"Checking {room}: Temperature = {temp}°F")
+    
+        if temp > 98.5:
+            print("Patient has fever → Prescribing medicine.")
+            performance += 1
+        else:
+            print("Patient is healthy.")
+        print()
+    
+    def move_to(next_room):
+        global performance, current_room
+        print(f"Moving from {current_room} to {next_room}")
+        current_room = next_room
+        performance -= 1
+    
+    # AI agent operation
+    print("---- Medicine Prescribing Agent ----\n")
+    
+    check_and_treat(current_room)
+    
+    next_room = "Room B" if current_room == "Room A" else "Room A"
+    move_to(next_room)
+    
+    check_and_treat(current_room)
+    
+    print("Final Performance Score:", performance)
+
+
+<h3>OUTPUT</h3>
+
+<img width="983" height="410" alt="image" src="https://github.com/user-attachments/assets/c22edc15-c0aa-4313-a2d3-ca030d7ba7a0" />
+
+
